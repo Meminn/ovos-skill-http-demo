@@ -73,5 +73,9 @@ setup(
     include_package_data=True,
     install_requires=get_requirements("requirements.txt"),
     keywords='ovos skill plugin',
-    entry_points={'ovos.plugin.skill': PLUGIN_ENTRY_POINT}
-)
+    entry_points={
+        'ovos.plugin.skill': [  # MUST be a list
+            f'{SKILL_ID}={SKILL_PKG}:{SKILL_CLAZZ}'
+        ]
+    }
+) 
