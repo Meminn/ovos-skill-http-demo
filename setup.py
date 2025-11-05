@@ -4,8 +4,8 @@ import os
 from os import walk, path
 
 SKILL_CLAZZ = "HttpDemoSkill"
-URL = "https://github.com/Meminn/ovos-skill-http-demo"
-AUTHOR = "Meminn"
+URL = "https://github.com/meminn/ovos-skill-http-demo"
+AUTHOR = "meminn"
 PYPI_NAME = URL.split("/")[-1]
 SKILL_ID = f"{PYPI_NAME.lower()}.{AUTHOR.lower()}"
 SKILL_PKG = PYPI_NAME.lower().replace('-', '_')
