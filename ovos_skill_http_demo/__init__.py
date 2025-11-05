@@ -1,13 +1,13 @@
 from ovos_workshop.skills import OVOSSkill
-from ovos_workshop.decorators import intent_handler
 import requests
 
 class HttpDemoSkill(OVOSSkill):
     def initialize(self):
         # This is a no-token-required API, so no need for settings here
         self.api_base = "https://jsonplaceholder.typicode.com"
+        # Register the locale intent file explicitly
+        self.register_intent_file("fetch.api.intent", self.handle_fetch_api)
 
-    @intent_handler('fetch.api.intent')  # Match this to the intent in your locale
     def handle_fetch_api(self, message):
         try:
             # API URL to fetch the post with ID 1
@@ -29,3 +29,7 @@ class HttpDemoSkill(OVOSSkill):
             
     def stop(self):
         return False
+
+
+def create_skill():
+    return HttpDemoSkill()

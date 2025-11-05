@@ -1,6 +1,6 @@
 {
-  "skill_id": "http-demo.yourname",
-  "source": "https://github.com/yourname/ovos-skill-http-demo",
+  "skill_id": "ovos-skill-http-demo.meminn",
+  "source": "https://github.com/meminn/ovos-skill-http-demo",
   "package_name": "ovos-skill-http-demo",
   "display_name": "HTTP Demo",
   "description": "Calls an HTTP API and speaks the result.",

@@ -4,13 +4,14 @@ import os
 from os import walk, path
 
 SKILL_CLAZZ = "HttpDemoSkill"
+CREATE_SKILL_FUNC = "create_skill"
 URL = "https://github.com/meminn/ovos-skill-http-demo"
 AUTHOR = "meminn"
 PYPI_NAME = URL.split("/")[-1]
 SKILL_ID = f"{PYPI_NAME.lower()}.{AUTHOR.lower()}"
 SKILL_PKG = PYPI_NAME.lower().replace('-', '_')
-PLUGIN_ENTRY_POINT = f"{SKILL_ID}={SKILL_PKG}:{SKILL_CLAZZ}"
-VERSION = "0.0.1"
+PLUGIN_ENTRY_POINT = f"{SKILL_ID}={SKILL_PKG}:{CREATE_SKILL_FUNC}"
+VERSION = "0.0.3"
 DESCRIPTION = "An Open Voice OS skill that demonstrates making HTTP requests to a public API."
 EMAIL = "meminn@example.com"
 LICENSE = "Apache-2.0"
@@ -45,17 +46,18 @@ def get_requirements(requirements_filename: str):
 
 def find_resource_files():
     """ensure all non-code resource files are included in the package"""
-    # add any folder with files your skill uses here! 
+    # add any folder with files your skill uses here!
     resource_base_dirs = ("locale", "ui", "vocab", "dialog", "regex")
-    base_dir = path.dirname(__file__)
-    package_data = ["*.json"]
+    package_root = path.join(path.dirname(__file__), SKILL_PKG)
+    package_data = []
     for res in resource_base_dirs:
-        if path.isdir(path.join(base_dir, res)):
-            for (directory, _, files) in walk(path.join(base_dir, res)):
+        resource_dir = path.join(package_root, res)
+        if path.isdir(resource_dir):
+            for (directory, _, files) in walk(resource_dir):
                 if files:
-                    package_data.append(
-                        path.join(directory.replace(base_dir, "").lstrip('/'),
-                                  '*'))
+                    relative_dir = path.relpath(directory, package_root)
+                    cleaned = relative_dir.replace("\\", "/")
+                    package_data.append(f"{cleaned}/*")
     return package_data
 
 # Setup configuration
@@ -74,8 +76,6 @@ setup(
     install_requires=get_requirements("requirements.txt"),
     keywords='ovos skill plugin',
     entry_points={
-        'ovos.plugin.skill': [  # MUST be a list
-            f'{SKILL_ID}={SKILL_PKG}:{SKILL_CLAZZ}'
-        ]
+        'opm.skill': [PLUGIN_ENTRY_POINT]
     }
-) 
+)
