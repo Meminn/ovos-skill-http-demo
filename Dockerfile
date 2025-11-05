@@ -3,7 +3,8 @@
 # -----------------------------
 FROM docker.io/smartgic/ovos-skill-base:stable
 
-COPY . /opt/ovos/skills/ovos-skill-http-demo
+# Ensure the ovos user owns the skill sources so pip can build the wheel
+COPY --chown=ovos:ovos . /opt/ovos/skills/ovos-skill-http-demo
 
 # deps + install the skill (registers entry point)
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel && \
