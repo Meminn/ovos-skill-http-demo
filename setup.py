@@ -47,7 +47,7 @@ def get_requirements(requirements_filename: str):
 def find_resource_files():
     """ensure all non-code resource files are included in the package"""
     # add any folder with files your skill uses here!
-    resource_base_dirs = ("locale", "ui", "vocab", "dialog", "regex")
+    resource_base_dirs = ("locale", "ui", "vocab", "dialog", "regex", "intents")
     package_root = path.join(path.dirname(__file__), SKILL_PKG)
     package_data = []
     for res in resource_base_dirs:
