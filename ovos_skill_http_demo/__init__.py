@@ -3,8 +3,9 @@ from ovos_workshop.decorators import intent_handler
 import requests
 
 class HttpDemoSkill(OVOSSkill):
-    def initialize(self):
+    def __init__(self, **kwargs):
         # This is a no-token-required API, so no need for settings here
+        super().__init__(**kwargs)
         self.api_base = "https://jsonplaceholder.typicode.com"
     
     @intent_handler('fetch_api.intent')  # Match this to the intent in your locale
