@@ -11,7 +11,7 @@ PYPI_NAME = URL.split("/")[-1]
 SKILL_ID = f"{PYPI_NAME.lower()}.{AUTHOR.lower()}"
 SKILL_PKG = PYPI_NAME.lower().replace('-', '_')
 PLUGIN_ENTRY_POINT = f"{SKILL_ID}={SKILL_PKG}:{CREATE_SKILL_FUNC}"
-VERSION = "0.0.3"
+VERSION = "0.0.4"
 DESCRIPTION = "An Open Voice OS skill that demonstrates making HTTP requests to a public API."
 EMAIL = "meminn@example.com"
 LICENSE = "Apache-2.0"

@@ -1,14 +1,13 @@
 from ovos_workshop.skills import OVOSSkill
-from ovos_workshop.decorators import intent_file_handler
 import requests
 
+
 class HttpDemoSkill(OVOSSkill):
-    def __init__(self, **kwargs):
+    def initialize(self):
         # This is a no-token-required API, so no need for settings here
-        super().__init__(**kwargs)
         self.api_base = "https://jsonplaceholder.typicode.com"
-    
-    @intent_file_handler('fetch_api.intent')  # Match this to the intent in your locale
+        self.register_intent_file("fetch_api.intent", self.handle_fetch_api)
+
     def handle_fetch_api(self, message):
         try:
             # API URL to fetch the post with ID 1
@@ -27,9 +26,10 @@ class HttpDemoSkill(OVOSSkill):
         except requests.exceptions.RequestException:
             # If something goes wrong (network, API error, etc.)
             self.speak_dialog("api_error")
-            
+
     def stop(self):
         return False
-    
+
+
 def create_skill(bus=None, skill_id=None, **kwargs):
     return HttpDemoSkill(bus=bus, skill_id=skill_id, **kwargs)
