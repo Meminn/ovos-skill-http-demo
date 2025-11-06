@@ -1,2 +1,0 @@
-[opm.skill]
-ovos-skill-http-demo.meminn = ovos_skill_http_demo:create_skill
