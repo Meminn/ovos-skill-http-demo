@@ -31,5 +31,5 @@ class HttpDemoSkill(OVOSSkill):
     def stop(self):
         return False
     
-def create_skill():
-    return HttpDemoSkill()
+def create_skill(bus=None, skill_id=None, **kwargs):
+    return HttpDemoSkill(bus=bus, skill_id=skill_id, **kwargs)
