@@ -1,5 +1,5 @@
 from ovos_workshop.skills import OVOSSkill
-from ovos_workshop.decorators import intent_handler
+from ovos_workshop.decorators import intent_file_handler
 import requests
 
 class HttpDemoSkill(OVOSSkill):
@@ -8,7 +8,7 @@ class HttpDemoSkill(OVOSSkill):
         super().__init__(**kwargs)
         self.api_base = "https://jsonplaceholder.typicode.com"
     
-    @intent_handler('fetch_api.intent')  # Match this to the intent in your locale
+    @intent_file_handler('fetch_api.intent')  # Match this to the intent in your locale
     def handle_fetch_api(self, message):
         try:
             # API URL to fetch the post with ID 1
