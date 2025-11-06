@@ -1,4 +1,5 @@
 from ovos_workshop.skills import OVOSSkill
+from ovos_workshop.decorators import intent_handler
 import requests
 
 
@@ -8,6 +9,7 @@ class HttpDemoSkill(OVOSSkill):
         self.api_base = "https://jsonplaceholder.typicode.com"
         self.register_intent_file("fetch_api.intent", self.handle_fetch_api)
 
+    @intent_handler("fetch_api.intent")
     def handle_fetch_api(self, message):
         try:
             # API URL to fetch the post with ID 1
