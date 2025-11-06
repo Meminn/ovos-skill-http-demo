@@ -1,0 +1,12 @@
+setup.py
+ovos_skill_http_demo/__init__.py
+ovos_skill_http_demo.egg-info/PKG-INFO
+ovos_skill_http_demo.egg-info/SOURCES.txt
+ovos_skill_http_demo.egg-info/dependency_links.txt
+ovos_skill_http_demo.egg-info/entry_points.txt
+ovos_skill_http_demo.egg-info/requires.txt
+ovos_skill_http_demo.egg-info/top_level.txt
+ovos_skill_http_demo/locale/skill.json
+ovos_skill_http_demo/locale/en-us/dialog/api_error.dialog
+ovos_skill_http_demo/locale/en-us/dialog/api_success.dialog
+ovos_skill_http_demo/locale/en-us/intents/fetch_api.intent

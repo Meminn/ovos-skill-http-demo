@@ -1,0 +1,18 @@
+Metadata-Version: 2.4
+Name: ovos-skill-http-demo
+Version: 0.0.4
+Summary: An Open Voice OS skill that demonstrates making HTTP requests to a public API.
+Home-page: https://github.com/meminn/ovos-skill-http-demo
+Author: meminn
+Author-email: meminn@example.com
+License: Apache-2.0
+Keywords: ovos skill plugin
+Requires-Dist: ovos-workshop
+Requires-Dist: requests
+Dynamic: author
+Dynamic: author-email
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: license
+Dynamic: requires-dist
+Dynamic: summary
